@@ -1,1 +1,29 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: todo-backend }
+  template:
+    metadata:
+      labels: { app: todo-backend }
+    spec:
+      containers:
+        - name: backend
+          # Image gets patched in overlay
+          image: ghcr.io/you/todo-backend:REPLACED_BY_OVERLAY
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_DIR
+              value: /data
+          volumeMounts:
+            - name: backend-data
+              mountPath: /data
+      volumes:
+        - name: backend-data
+          persistentVolumeClaim:
+            claimName: todo-backend-pvc
