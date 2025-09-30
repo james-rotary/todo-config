@@ -41,4 +41,11 @@ patches:
         value: todo-dev.localtest.me
     target:
       kind: Ingress
-      name: todo
+      name: todo-api
+  - patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: todo-dev.localtest.me
+    target:
+      kind: Ingress
+      name: todo-frontend
