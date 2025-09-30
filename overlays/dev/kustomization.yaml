@@ -26,3 +26,10 @@ patches:
     target:
       kind: Deployment
       name: todo-backend
+  - patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: todo-dev.localtest.me
+    target:
+      kind: Ingress
+      name: todo
