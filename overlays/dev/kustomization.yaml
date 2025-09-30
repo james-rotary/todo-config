@@ -14,7 +14,7 @@ images:
     newTag: dev
   - name: ghcr.io/you/todo-frontend:REPLACED_BY_OVERLAY
     newName: todo-frontend
-    newTag: dev
+    newTag: dev-20250930-1
 
 patches:
   - patch: |-
