@@ -6,3 +6,14 @@ namespace: todo-dev
 resources:
   - ../../base
   - namespace.yaml
+
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: NODE_ENV
+          value: development
+    target:
+      kind: Deployment
+      name: todo-backend
