@@ -7,6 +7,15 @@ resources:
   - ../../base
   - namespace.yaml
 
+# Replace placeholder images with local dev images
+images:
+  - name: ghcr.io/you/todo-backend:REPLACED_BY_OVERLAY
+    newName: todo-backend
+    newTag: dev
+  - name: ghcr.io/you/todo-frontend:REPLACED_BY_OVERLAY
+    newName: todo-frontend
+    newTag: dev
+
 patches:
   - patch: |-
       - op: add
