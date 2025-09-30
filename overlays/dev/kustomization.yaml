@@ -6,8 +6,3 @@ namespace: todo-dev
 resources:
   - ../../base
   - namespace.yaml
-
-patches:
-  - path: patches/backend-image.yaml
-  - path: patches/frontend-image.yaml
-  - path: patches/ingress-host.yaml
