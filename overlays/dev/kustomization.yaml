@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: todo-dev
+
+resources:
+  - ../../base
+  - namespace.yaml
+
+patches:
+  - path: patches/backend-image.yaml
+  - path: patches/frontend-image.yaml
+  - path: patches/ingress-host.yaml
