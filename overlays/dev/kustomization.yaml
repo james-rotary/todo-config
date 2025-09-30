@@ -30,8 +30,6 @@ patches:
       - op: add
         path: /spec/template/spec/containers/0/env
         value:
-          - name: NEXT_PUBLIC_API_URL
-            value: /api
           - name: API_BASE_URL_INTERNAL
             value: http://todo-backend:8080
     target:
