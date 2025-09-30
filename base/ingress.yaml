@@ -4,11 +4,19 @@ metadata:
   name: todo
   annotations:
     kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
     - host: REPLACED_BY_OVERLAY.localtest.me
       http:
         paths:
+          - path: /api(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: todo-backend
+                port:
+                  number: 8080
           - path: /
             pathType: Prefix
             backend:
@@ -16,10 +24,3 @@ spec:
                 name: todo-frontend
                 port:
                   number: 80
-          - path: /api
-            pathType: Prefix
-            backend:
-              service:
-                name: todo-backend
-                port:
-                  number: 8080

@@ -27,6 +27,15 @@ patches:
       kind: Deployment
       name: todo-backend
   - patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/env
+        value:
+          - name: NEXT_PUBLIC_API_URL
+            value: /api
+    target:
+      kind: Deployment
+      name: todo-frontend
+  - patch: |-
       - op: replace
         path: /spec/rules/0/host
         value: todo-dev.localtest.me
