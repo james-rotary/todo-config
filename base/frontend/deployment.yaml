@@ -16,4 +16,4 @@ spec:
           image: ghcr.io/you/todo-frontend:REPLACED_BY_OVERLAY
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 80
+            - containerPort: 3000
