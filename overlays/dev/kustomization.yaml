@@ -7,7 +7,7 @@ resources:
   - ../../base
   - namespace.yaml
 
-# Replace placeholder images with local dev images
+# Development-specific container images
 images:
   - name: ghcr.io/you/todo-backend:REPLACED_BY_OVERLAY
     newName: todo-backend
@@ -16,22 +16,13 @@ images:
     newName: todo-frontend
     newTag: dev-20250930-1
 
+# Development-specific configuration patches
 patches:
-  - patch: |-
-      - op: add
-        path: /spec/template/spec/containers/0/env/-
-        value:
-          name: NODE_ENV
-          value: development
+  - path: patch-backend-deployment.yaml
     target:
       kind: Deployment
       name: todo-backend
-  - patch: |-
-      - op: add
-        path: /spec/template/spec/containers/0/env
-        value:
-          - name: API_BASE_URL_INTERNAL
-            value: http://todo-backend:8080
+  - path: patch-frontend-deployment.yaml
     target:
       kind: Deployment
       name: todo-frontend
