@@ -9,8 +9,6 @@ resources:
   - backend/service.yaml
   - frontend/deployment.yaml
   - frontend/service.yaml
-  - ingress-frontend.yaml
-  - ingress-api.yaml
 
 commonLabels:
   app.kubernetes.io/name: todo
