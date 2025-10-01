@@ -6,7 +6,7 @@ resources:
   - database/statefulset.yaml
   - database/service.yaml
   - database/configmap.yaml
-  - database/secret.yaml
+  - database/sealedsecret.yaml
   
   # Application resources
   - backend/deployment.yaml
