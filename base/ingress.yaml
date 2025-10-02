@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: todo-app-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "selfsigned-issuer"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - todo.local
+      secretName: todo-app-tls  # cert-manager will create this automatically
+  rules:
+    - host: todo.local
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: todo-backend
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: todo-frontend
+                port:
+                  number: 3000
