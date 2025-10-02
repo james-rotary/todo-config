@@ -7,6 +7,3 @@ spec:
     spec:
       containers:
         - name: frontend
-          env:
-            - name: API_BASE_URL_INTERNAL
-              value: https://todo.local/api
